@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>user dashboard</h1>'
+
+<div>welcome {{ request.user }}</div>
+<br>
+<div><a href="{% url 'task_5:change_password' %}">press to change your password</a></div>
+<div><a href="{% url 'task_5:logout' %}">press to logout</a></div>
+<br>
+<br>
+<div>you can search for notes:</div>
+<form action="" method="get">
+    <div>
+        <label for="">search notes..</label>
+        <input type="search" name="note">
+    </div>
+    <div>
+    <label for="">display only your own notes</label>
+    <input type="checkbox" name="check">
+    </div>
+    <input type="submit">
+</form>
+<br>
+<br>
+<br>
+<div>search result for notes:</div>
+<br>
+{% for note in notes %}
+    <div>{{ note.text }} written by {{ note.author }}</div>
+{% endfor %}
+
+</body>
+</html>
