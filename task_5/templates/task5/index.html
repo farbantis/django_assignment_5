@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div><a href="{% url 'task_5:login' %}">press to login</a></div>
+<div><a href="{% url 'task_5:register' %}">press to register</a></div>
+<br>
+<br>
+
+<div>Напишите форму, в которой можно указать имя, пол, возраст и уровень владения английским </div>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+</form>
+
+</body>
+</html>
