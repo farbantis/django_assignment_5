@@ -52,10 +52,8 @@ def register_user(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            new_user = TaskUser(username=cd['username'])
-            new_user.save(commit=False)
-            new_user.set_password(cd['password'])
-            new_user.save()
+            TaskUser.objects.create_user(username=cd['username'], password=cd['password'])
+            return redirect('task_5:index')
     else:
         form = UserRegisterForm()
     return render(request, './register.html', {'form': form})

@@ -31,14 +31,13 @@ class UserLoginForm(forms.Form):
 
 class UserRegisterForm(forms.Form):
     username = forms.CharField(max_length=50)
-    login = forms.CharField(max_length=50)
     password = forms.CharField(max_length=50, widget=forms.PasswordInput)
     password1 = forms.CharField(max_length=50, widget=forms.PasswordInput)
 
     def clean(self):
         cd = super(UserRegisterForm, self).clean()
         if cd['password'] != cd['password1']:
-            forms.ValidationError('incorrect password')
+            raise ValidationError('incorrect password')
 
 
 class ChangePasswordForm(forms.Form):
